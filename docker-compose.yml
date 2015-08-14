@@ -1,0 +1,6 @@
+ngx_mruby:
+  dockerfile: Dockerfile.centos7
+  build: .
+  command: cp -a /root/rpmbuild/RPMS/x86_64/nginx-1.9.3-1.el7.centos.ngx.x86_64.rpm /tmp/nginx-ngx_mruby-1.9.3-1.el7.centos.ngx.x86_64.rpm
+  volumes:
+    - .:/tmp:rw

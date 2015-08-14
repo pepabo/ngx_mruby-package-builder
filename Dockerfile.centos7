@@ -1,0 +1,33 @@
+FROM centos:7
+MAINTAINER hsbt@ruby-lang.org
+
+RUN yum -y install --enablerepo=extras epel-release
+RUN yum -y install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+RUN yum -y groupinstall "Development Tools"
+RUN yum -y install rake openssl-devel wget
+RUN yum -y install rpm-build rpmdevtools yum-utils mercurial
+
+ENV NGINX_VERSION 1.9.3
+ENV NGX_MRUBY_VERSION 1.12.14
+
+WORKDIR /usr/local/src
+RUN git clone --branch release-$NGINX_VERSION --depth 1 https://github.com/nginx/nginx.git
+RUN git clone --branch v$NGX_MRUBY_VERSION --depth 1 https://github.com/matsumoto-r/ngx_mruby.git
+RUN git clone --branch v0.2.19 --depth 1 https://github.com/simpl/ngx_devel_kit.git
+
+RUN yum -y install libmemcached-devel --enablerepo=remi
+
+WORKDIR /usr/local/src/ngx_mruby
+RUN git submodule init
+RUN git submodule update
+RUN ./configure --with-ngx-src-root=/usr/local/src/nginx
+ADD ngx_mruby/build_config.rb /usr/local/src/ngx_mruby/build_config.rb
+RUN make build_mruby
+RUN make generate_gems_config
+
+RUN wget http://nginx.org/packages/mainline/centos/7/SRPMS/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm -P /tmp
+RUN rpm -Uvh /tmp/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm
+RUN yum-builddep /tmp/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm
+ADD ngx_mruby/nginx.spec /root/rpmbuild/SPECS/nginx.spec
+
+RUN rpmbuild -ba /root/rpmbuild/SPECS/nginx.spec
