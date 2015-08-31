@@ -1,0 +1,31 @@
+--- nginx.spec.orig	2015-08-31 18:15:57.000000000 +0900
++++ nginx.spec	2015-08-14 22:06:56.000000000 +0900
+@@ -31,8 +31,10 @@
+ Requires(pre): shadow-utils
+ Requires: systemd
+ Requires: openssl >= 1.0.1
++Requires: libmemcached
+ BuildRequires: systemd
+ BuildRequires: openssl-devel >= 1.0.1
++BuildRequires: libmemcached-devel
+ Epoch: 1
+ %define with_spdy 1
+ %endif
+@@ -139,6 +141,8 @@
+         --with-debug \
+         %{?with_spdy:--with-http_spdy_module} \
+         --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
++        --add-module=/usr/local/src/ngx_mruby \
++        --add-module=/usr/local/src/ngx_devel_kit \
+         $*
+ make %{?_smp_mflags}
+ %{__mv} %{_builddir}/%{name}-%{version}/objs/nginx \
+@@ -180,6 +184,8 @@
+         --with-ipv6 \
+         %{?with_spdy:--with-http_spdy_module} \
+         --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
++        --add-module=/usr/local/src/ngx_mruby \
++        --add-module=/usr/local/src/ngx_devel_kit \
+         $*
+ make %{?_smp_mflags}
+ 
