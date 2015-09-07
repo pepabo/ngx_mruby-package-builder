@@ -1,0 +1,18 @@
+--- debian/control.orig	2015-09-07 18:34:11.000000000 +0900
++++ debian/control	2015-09-07 18:34:26.000000000 +0900
+@@ -2,13 +2,13 @@
+ Section: httpd
+ Priority: optional
+ Maintainer: Sergey Budnevitch <sb@nginx.com>
+-Build-Depends: debhelper (>= 7.0.50~), libssl-dev (>= 0.9.7), libpcre3-dev, zlib1g-dev
++Build-Depends: debhelper (>= 7.0.50~), libssl-dev (>= 0.9.7), libpcre3-dev, zlib1g-dev, libmemcached-dev
+ Standards-Version: 3.9.1
+ Homepage: http://nginx.org
+
+ Package: nginx
+ Architecture: any
+-Depends: ${misc:Depends}, ${shlibs:Depends}, lsb-base, adduser
++Depends: ${misc:Depends}, ${shlibs:Depends}, lsb-base, adduser, libmemcached10
+ Provides: httpd
+ Description: high performance web server
+  nginx [engine x] is an HTTP and reverse proxy server, as well as
