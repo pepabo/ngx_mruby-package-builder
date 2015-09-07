@@ -1,14 +1,5 @@
---- rules.orig	2015-09-07 18:00:08.000000000 +0900
-+++ rules	2015-09-07 18:01:32.000000000 +0900
-@@ -8,7 +8,7 @@
- 	echo "--with-http_spdy_module")
- 
- %:
--	dh $@ 
-+	dh $@
- 
- override_dh_auto_configure: configure_debug
- 
+--- debian/rules.orig	2015-09-07 18:00:08.000000000 +0900
++++ debian/rules	2015-09-07 18:01:32.000000000 +0900
 @@ -55,7 +55,9 @@
  		$(WITH_SPDY) \
  		--with-cc-opt="$(CFLAGS)" \
@@ -18,7 +9,7 @@
 +		--add-module=/usr/local/src/ngx_mruby \
 +		--add-module=/usr/local/src/ngx_devel_kit
  	dh_auto_build
- 
+
  configure_debug:
 @@ -97,6 +99,8 @@
  		--with-cc-opt="$(CFLAGS)" \
@@ -27,5 +18,5 @@
 +		--add-module=/usr/local/src/ngx_mruby \
 +		--add-module=/usr/local/src/ngx_devel_kit \
  		--with-debug
- 
+
  override_dh_auto_install:

@@ -39,8 +39,7 @@ RUN apt-get build-dep -y nginx
 
 WORKDIR /usr/local/src
 RUN apt-get source nginx
-WORKDIR /usr/local/src/nginx-$NGINX_VERSION/debian
+WORKDIR /usr/local/src/nginx-$NGINX_VERSION
 ADD ngx_mruby/rules.patch /tmp/rules.patch
 RUN patch -p0 < /tmp/rules.patch
-WORKDIR /usr/local/src/nginx-$NGINX_VERSION
 RUN dpkg-buildpackage -r -uc -b
