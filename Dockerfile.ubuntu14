@@ -9,7 +9,7 @@ RUN apt-get install -y build-essential devscripts
 RUN apt-get install -y git ruby2.1 rake bison libssl-dev ruby-switch
 RUN ruby-switch --set ruby2.1
 
-ENV NGINX_VERSION 1.9.3
+ENV NGINX_VERSION 1.9.4
 ENV NGX_MRUBY_VERSION 1.12.14
 
 WORKDIR /usr/local/src
