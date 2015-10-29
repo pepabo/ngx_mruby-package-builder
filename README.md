@@ -1,6 +1,10 @@
 # ngx_mruby-builder
 
+Please install https://www.docker.com/docker-toolbox
+
+and run following commands
+
 ```sh
-$ docker-compose build ngx_mruby
-$ docker-compose run ngx_mruby
+$ docker-compose build centos7
+$ docker-compose run centos7
 ```
