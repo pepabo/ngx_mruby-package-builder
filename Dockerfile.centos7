@@ -25,7 +25,7 @@ RUN make generate_gems_config
 RUN wget http://nginx.org/packages/mainline/centos/7/SRPMS/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm -P /tmp
 RUN rpm -Uvh /tmp/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm
 RUN yum-builddep /tmp/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm
-ADD ngx_mruby/centos7/nginx.spec.patch /root/rpmbuild/SPECS/nginx.spec.patch
+ADD ngx_mruby/centos/nginx.spec.patch /root/rpmbuild/SPECS/nginx.spec.patch
 
 WORKDIR /root/rpmbuild/SPECS
 RUN patch -p0 < nginx.spec.patch
