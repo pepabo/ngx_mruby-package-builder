@@ -7,8 +7,8 @@ RUN yum -y groupinstall "Development Tools"
 RUN yum -y install rake openssl-devel wget
 RUN yum -y install rpm-build rpmdevtools yum-utils mercurial
 
-ENV NGINX_VERSION 1.9.3
-ENV NGX_MRUBY_VERSION 1.12.14
+ENV NGINX_VERSION 1.9.6
+ENV NGX_MRUBY_VERSION 1.15.0
 
 WORKDIR /usr/local/src
 RUN git clone --branch release-$NGINX_VERSION --depth 1 https://github.com/nginx/nginx.git

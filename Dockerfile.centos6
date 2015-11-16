@@ -9,8 +9,8 @@ RUN yum -y install rpm-build rpmdevtools yum-utils mercurial
 RUN wget https://s3.amazonaws.com/pkgr-buildpack-ruby/current/centos-6/ruby-2.2.3.tgz
 RUN tar xf ruby-2.2.3.tgz -C /usr/local
 
-ENV NGINX_VERSION 1.9.3
-ENV NGX_MRUBY_VERSION 1.12.14
+ENV NGINX_VERSION 1.9.6
+ENV NGX_MRUBY_VERSION 1.15.0
 
 WORKDIR /usr/local/src
 RUN git clone --branch release-$NGINX_VERSION --depth 1 https://github.com/nginx/nginx.git
