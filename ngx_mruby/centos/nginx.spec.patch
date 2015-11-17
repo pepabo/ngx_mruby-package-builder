@@ -1,18 +1,20 @@
---- nginx.spec.org	2015-10-26 17:37:32.000000000 +0900
-+++ nginx.spec	2015-10-26 17:39:14.000000000 +0900
-@@ -139,6 +139,8 @@
+--- nginx.spec.orig	2015-11-17 22:40:35.000000000 +0900
++++ nginx.spec	2015-11-17 22:40:53.000000000 +0900
+@@ -139,6 +139,9 @@
          --with-debug \
          %{?with_http2:--with-http_v2_module} \
          --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
++        --without-stream_access_module \
 +        --add-module=/usr/local/src/ngx_mruby \
 +        --add-module=/usr/local/src/ngx_devel_kit \
          $*
  make %{?_smp_mflags}
  %{__mv} %{_builddir}/%{name}-%{version}/objs/nginx \
-@@ -180,6 +182,8 @@
+@@ -180,6 +183,9 @@
          --with-ipv6 \
          %{?with_http2:--with-http_v2_module} \
          --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
++        --without-stream_access_module \
 +        --add-module=/usr/local/src/ngx_mruby \
 +        --add-module=/usr/local/src/ngx_devel_kit \
          $*
