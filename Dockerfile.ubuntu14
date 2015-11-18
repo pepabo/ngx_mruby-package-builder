@@ -9,8 +9,8 @@ RUN apt-get install -y build-essential devscripts
 RUN apt-get install -y git ruby2.1 rake bison libssl-dev ruby-switch
 RUN ruby-switch --set ruby2.1
 
-ENV NGINX_VERSION 1.9.4
-ENV NGX_MRUBY_VERSION 1.12.14
+ENV NGINX_VERSION 1.9.7
+ENV NGX_MRUBY_VERSION 1.15.0
 
 WORKDIR /usr/local/src
 RUN git clone --branch release-$NGINX_VERSION --depth 1 https://github.com/nginx/nginx.git
@@ -35,10 +35,10 @@ RUN echo 'deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx' >> /etc/a
 RUN echo 'deb-src http://nginx.org/packages/mainline/ubuntu/ trusty nginx' >> /etc/apt/sources.list
 
 RUN apt-get update
-RUN apt-get build-dep -y nginx
+RUN apt-get build-dep -y nginx="$NGINX_VERSION"
 
 WORKDIR /usr/local/src
-RUN apt-get source nginx
+RUN apt-get source nginx="$NGINX_VERSION"
 WORKDIR /usr/local/src/nginx-$NGINX_VERSION
 ADD ngx_mruby/ubuntu14.04/rules.patch /tmp/rules.patch
 ADD ngx_mruby/ubuntu14.04/control.patch /tmp/control.patch
