@@ -14,6 +14,7 @@ MRuby::Build.new do |conf|
   conf.gem :github => 'mattn/mruby-json'
   conf.gem :github => 'mattn/mruby-onig-regexp'
   conf.gem :github => 'matsumoto-r/mruby-redis'
+  # conf.gem :github => 'matsumoto-r/mruby-memcached'
   conf.gem :github => 'matsumoto-r/mruby-sleep'
   conf.gem :github => 'matsumoto-r/mruby-userdata'
   conf.gem :github => 'matsumoto-r/mruby-uname'
