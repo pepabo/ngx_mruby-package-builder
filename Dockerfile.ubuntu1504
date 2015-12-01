@@ -1,6 +1,7 @@
 FROM ubuntu:15.04
 MAINTAINER hsbt@ruby-lang.org
 
+RUN apt update && apt dist-upgrade -qy
 RUN apt-get install -y software-properties-common
 RUN add-apt-repository -y ppa:brightbox/ruby-ng
 RUN apt-get update
