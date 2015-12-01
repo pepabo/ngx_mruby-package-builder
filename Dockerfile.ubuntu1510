@@ -1,0 +1,44 @@
+FROM ubuntu:15.10
+MAINTAINER hsbt@ruby-lang.org
+
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository -y ppa:brightbox/ruby-ng
+RUN apt-get update
+RUN apt-get dist-upgrade -y
+RUN apt-get install -y build-essential devscripts
+RUN apt-get install -y git ruby2.1 rake bison libssl-dev ruby-switch
+RUN ruby-switch --set ruby2.1
+
+ENV NGINX_VERSION 1.9.7
+ENV NGX_MRUBY_VERSION 1.15.0
+
+WORKDIR /usr/local/src
+RUN git clone --branch release-$NGINX_VERSION --depth 1 https://github.com/nginx/nginx.git
+RUN git clone --branch v$NGX_MRUBY_VERSION --depth 1 https://github.com/matsumoto-r/ngx_mruby.git
+RUN git clone --branch v0.2.19 --depth 1 https://github.com/simpl/ngx_devel_kit.git
+
+WORKDIR /usr/local/src/ngx_mruby
+RUN git submodule init
+RUN git submodule update
+RUN ./configure --with-ngx-src-root=/usr/local/src/nginx
+ADD ngx_mruby/build_config.rb /usr/local/src/ngx_mruby/build_config.rb
+RUN make build_mruby
+RUN make generate_gems_config
+
+RUN apt-get install -y wget
+RUN wget http://nginx.org/keys/nginx_signing.key
+RUN apt-key add nginx_signing.key
+
+RUN echo 'deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx' >> /etc/apt/sources.list
+RUN echo 'deb-src http://nginx.org/packages/mainline/ubuntu/ trusty nginx' >> /etc/apt/sources.list
+
+RUN apt-get update
+RUN apt-get build-dep -y nginx="$NGINX_VERSION"
+
+WORKDIR /usr/local/src
+RUN apt-get source nginx="$NGINX_VERSION"
+WORKDIR /usr/local/src/nginx-$NGINX_VERSION
+ADD ngx_mruby/ubuntu/rules.patch /tmp/rules.patch
+RUN patch -p0 < /tmp/rules.patch
+RUN patch -p0 < /tmp/control.patch
+RUN dpkg-buildpackage -r -uc -b
