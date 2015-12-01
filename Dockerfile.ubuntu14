@@ -17,8 +17,6 @@ RUN git clone --branch release-$NGINX_VERSION --depth 1 https://github.com/nginx
 RUN git clone --branch v$NGX_MRUBY_VERSION --depth 1 https://github.com/matsumoto-r/ngx_mruby.git
 RUN git clone --branch v0.2.19 --depth 1 https://github.com/simpl/ngx_devel_kit.git
 
-RUN apt-get install -y libmemcached-dev
-
 WORKDIR /usr/local/src/ngx_mruby
 RUN git submodule init
 RUN git submodule update
@@ -41,7 +39,6 @@ WORKDIR /usr/local/src
 RUN apt-get source nginx="$NGINX_VERSION"
 WORKDIR /usr/local/src/nginx-$NGINX_VERSION
 ADD ngx_mruby/ubuntu14.04/rules.patch /tmp/rules.patch
-ADD ngx_mruby/ubuntu14.04/control.patch /tmp/control.patch
 RUN patch -p0 < /tmp/rules.patch
 RUN patch -p0 < /tmp/control.patch
 RUN dpkg-buildpackage -r -uc -b
