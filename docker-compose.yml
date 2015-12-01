@@ -1,20 +1,27 @@
 centos6:
   dockerfile: Dockerfile.centos6
   build: .
-  command: cp -a /root/rpmbuild/RPMS/x86_64/nginx-1.9.6-1.el6.ngx.x86_64.rpm /tmp/nginx-ngx_mruby-1.9.6-1.el6.ngx.x86_64.rpm
+  command: cp -a /root/rpmbuild/RPMS/x86_64/nginx-1.9.7-1.el6.ngx.x86_64.rpm /tmp/nginx-ngx_mruby-1.9.7-1.el6.ngx.x86_64.rpm
   volumes:
     - .:/tmp:rw
 
 centos7:
   dockerfile: Dockerfile.centos7
   build: .
-  command: cp -a /root/rpmbuild/RPMS/x86_64/nginx-1.9.6-1.el7.centos.ngx.x86_64.rpm /tmp/nginx-ngx_mruby-1.9.6-1.el7.centos.ngx.x86_64.rpm
+  command: cp -a /root/rpmbuild/RPMS/x86_64/nginx-1.9.7-1.el7.centos.ngx.x86_64.rpm /tmp/nginx-ngx_mruby-1.9.7-1.el7.centos.ngx.x86_64.rpm
   volumes:
     - .:/tmp:rw
 
-ubuntu14.04:
-  dockerfile: Dockerfile.ubuntu14
+ubuntu1404:
+  dockerfile: Dockerfile.ubuntu1404
   build: .
   command: cp -a /usr/local/src/nginx_1.9.7-1~trusty_amd64.deb /tmp/nginx-ngx_mruby_1.9.7-1~trusty_amd64.deb
+  volumes:
+    - .:/tmp:rw
+
+ubuntu1504:
+  dockerfile: Dockerfile.ubuntu1504
+  build: .
+  command: cp -a /usr/local/src/nginx_1.9.7-1~vivid_amd64.deb /tmp/nginx-ngx_mruby_1.9.7-1~vivid_amd64.deb
   volumes:
     - .:/tmp:rw
