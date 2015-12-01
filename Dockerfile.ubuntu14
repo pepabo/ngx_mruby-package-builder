@@ -38,7 +38,7 @@ RUN apt-get build-dep -y nginx="$NGINX_VERSION"
 WORKDIR /usr/local/src
 RUN apt-get source nginx="$NGINX_VERSION"
 WORKDIR /usr/local/src/nginx-$NGINX_VERSION
-ADD ngx_mruby/ubuntu14.04/rules.patch /tmp/rules.patch
+ADD ngx_mruby/ubuntu/rules.patch /tmp/rules.patch
 RUN patch -p0 < /tmp/rules.patch
 RUN patch -p0 < /tmp/control.patch
 RUN dpkg-buildpackage -r -uc -b
