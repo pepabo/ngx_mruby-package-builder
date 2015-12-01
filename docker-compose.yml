@@ -12,14 +12,14 @@ centos7:
   volumes:
     - .:/tmp:rw
 
-ubuntu14.04:
+ubuntu1404:
   dockerfile: Dockerfile.ubuntu1404
   build: .
   command: cp -a /usr/local/src/nginx_1.9.7-1~trusty_amd64.deb /tmp/nginx-ngx_mruby_1.9.7-1~trusty_amd64.deb
   volumes:
     - .:/tmp:rw
 
-ubuntu15.10:
+ubuntu1510:
   dockerfile: Dockerfile.ubuntu1404
   build: .
   command: cp -a /usr/local/src/nginx_1.9.7-1~wily_amd64.deb /tmp/nginx-ngx_mruby_1.9.7-1~wily_amd64.deb
