@@ -16,7 +16,10 @@ ENV NGX_MRUBY_VERSION 1.15.0
 RUN wget http://nginx.org/packages/mainline/centos/6/SRPMS/nginx-$NGINX_VERSION-1.el6.ngx.src.rpm -P /tmp
 RUN rpm -Uvh /tmp/nginx-$NGINX_VERSION-1.el6.ngx.src.rpm
 RUN yum-builddep -y --nogpgcheck /tmp/nginx-$NGINX_VERSION-1.el6.ngx.src.rpm
+
+WORKDIR /root/rpmbuild/SPECS
 ADD ngx_mruby/centos/nginx.spec.patch /root/rpmbuild/SPECS/nginx.spec.patch
+RUN patch -p0 < nginx.spec.patch
 
 WORKDIR /usr/local/src
 RUN git clone --branch v$NGX_MRUBY_VERSION --depth 1 https://github.com/matsumoto-r/ngx_mruby.git
@@ -29,8 +32,5 @@ RUN ./configure --with-ngx-src-root=/root/rpmbuild/BUILD/nginx-$NGINX_VERSION
 ADD ngx_mruby/build_config.rb /usr/local/src/ngx_mruby/build_config.rb
 RUN make build_mruby
 RUN make generate_gems_config
-
-WORKDIR /root/rpmbuild/SPECS
-RUN patch -p0 < nginx.spec.patch
 
 RUN rpmbuild -ba /root/rpmbuild/SPECS/nginx.spec
