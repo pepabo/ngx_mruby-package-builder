@@ -7,7 +7,6 @@ RUN yum -y install rake openssl-devel wget
 RUN yum -y install rpm-build rpmdevtools yum-utils mercurial
 
 ENV NGINX_VERSION 1.9.9
-ENV NGX_MRUBY_VERSION 1.15.0
 
 RUN wget http://nginx.org/packages/mainline/centos/7/SRPMS/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm -P /tmp
 RUN rpm -Uvh /tmp/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm
@@ -17,9 +16,13 @@ WORKDIR /root/rpmbuild/SPECS
 ADD ngx_mruby/centos/nginx.spec.patch /root/rpmbuild/SPECS/nginx.spec.patch
 RUN patch -p0 < nginx.spec.patch
 
+ENV NGX_MRUBY_VERSION 1.15.0
+
 WORKDIR /usr/local/src
 RUN git clone --branch v$NGX_MRUBY_VERSION --depth 1 https://github.com/matsumoto-r/ngx_mruby.git
 RUN git clone --branch v0.2.19 --depth 1 https://github.com/simpl/ngx_devel_kit.git
+
+# RUN yum -y update
 
 WORKDIR /usr/local/src/ngx_mruby
 RUN git submodule init
