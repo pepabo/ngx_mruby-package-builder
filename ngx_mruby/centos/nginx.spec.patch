@@ -1,22 +1,12 @@
---- nginx.spec.orig	2015-11-17 22:40:35.000000000 +0900
-+++ nginx.spec	2015-11-17 22:40:53.000000000 +0900
-@@ -139,6 +139,9 @@
-         --with-debug \
-         %{?with_http2:--with-http_v2_module} \
-         --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
-+        --without-stream_access_module \
-+        --add-module=/usr/local/src/ngx_mruby \
-+        --add-module=/usr/local/src/ngx_devel_kit \
-         $*
- make %{?_smp_mflags}
- %{__mv} %{_builddir}/%{name}-%{version}/objs/nginx \
-@@ -180,6 +183,9 @@
+--- nginx.spec.orig     2016-03-16 13:11:12.754043330 +0000
++++ nginx.spec  2016-03-16 13:11:44.234690754 +0000
+@@ -91,6 +91,9 @@
+         --with-mail_ssl_module \
+         --with-file-aio \
          --with-ipv6 \
-         %{?with_http2:--with-http_v2_module} \
-         --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
 +        --without-stream_access_module \
 +        --add-module=/usr/local/src/ngx_mruby \
 +        --add-module=/usr/local/src/ngx_devel_kit \
-         $*
- make %{?_smp_mflags}
- 
+         %{?with_http2:--with-http_v2_module}")
+
+ Summary: High performance web server
