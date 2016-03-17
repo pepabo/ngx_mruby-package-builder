@@ -10,7 +10,7 @@ ENV NGINX_VERSION 1.9.12
 
 RUN wget http://nginx.org/packages/mainline/centos/7/SRPMS/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm -P /tmp
 RUN rpm -Uvh /tmp/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm
-RUN yum-builddep /tmp/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm
+RUN yum-builddep -y /tmp/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm
 
 WORKDIR /root/rpmbuild/SPECS
 ADD ngx_mruby/centos/nginx.spec.patch /root/rpmbuild/SPECS/nginx.spec.patch
