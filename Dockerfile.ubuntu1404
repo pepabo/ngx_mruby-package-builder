@@ -12,13 +12,13 @@ RUN echo 'deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx' >> /etc/a
 RUN echo 'deb-src http://nginx.org/packages/mainline/ubuntu/ trusty nginx' >> /etc/apt/sources.list
 RUN apt-get update
 
-ENV NGINX_VERSION 1.9.10
+ENV NGINX_VERSION 1.9.12
 
 WORKDIR /usr/local/src
 RUN apt-get build-dep -y nginx="$NGINX_VERSION"
 RUN apt-get source nginx="$NGINX_VERSION"
 
-ENV NGX_MRUBY_VERSION 1.16.1
+ENV NGX_MRUBY_VERSION 1.17.0
 
 WORKDIR /usr/local/src
 RUN git clone --branch v$NGX_MRUBY_VERSION --depth 1 https://github.com/matsumoto-r/ngx_mruby.git

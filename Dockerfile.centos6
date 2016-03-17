@@ -9,7 +9,7 @@ RUN yum -y install rpm-build rpmdevtools yum-utils mercurial
 RUN wget https://s3.amazonaws.com/pkgr-buildpack-ruby/current/centos-6/ruby-2.2.3.tgz
 RUN tar xf ruby-2.2.3.tgz -C /usr/local
 
-ENV NGINX_VERSION 1.9.10
+ENV NGINX_VERSION 1.9.12
 
 RUN wget http://nginx.org/packages/mainline/centos/6/SRPMS/nginx-$NGINX_VERSION-1.el6.ngx.src.rpm -P /tmp
 RUN rpm -Uvh /tmp/nginx-$NGINX_VERSION-1.el6.ngx.src.rpm
@@ -19,7 +19,7 @@ WORKDIR /root/rpmbuild/SPECS
 ADD ngx_mruby/centos/nginx.spec.patch /root/rpmbuild/SPECS/nginx.spec.patch
 RUN patch -p0 < nginx.spec.patch
 
-ENV NGX_MRUBY_VERSION 1.16.1
+ENV NGX_MRUBY_VERSION 1.17.0
 
 WORKDIR /usr/local/src
 RUN git clone --branch v$NGX_MRUBY_VERSION --depth 1 https://github.com/matsumoto-r/ngx_mruby.git
