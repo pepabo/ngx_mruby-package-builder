@@ -4,7 +4,7 @@ MAINTAINER hsbt@ruby-lang.org
 RUN yum -y install --enablerepo=extras epel-release
 RUN yum -y groupinstall "Development Tools"
 RUN yum -y install wget tar openssl-devel
-RUN yum -y install rpm-build rpmdevtools yum-utils mercurial
+RUN yum -y install rpm-build rpmdevtools yum-utils mercurial perl-ExtUtils-Embed
 
 RUN wget https://s3.amazonaws.com/pkgr-buildpack-ruby/current/centos-6/ruby-2.2.3.tgz
 RUN tar xf ruby-2.2.3.tgz -C /usr/local

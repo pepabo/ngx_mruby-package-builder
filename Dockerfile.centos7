@@ -4,7 +4,7 @@ MAINTAINER hsbt@ruby-lang.org
 RUN yum -y install --enablerepo=extras epel-release
 RUN yum -y groupinstall "Development Tools"
 RUN yum -y install rake openssl-devel wget
-RUN yum -y install rpm-build rpmdevtools yum-utils mercurial
+RUN yum -y install rpm-build rpmdevtools yum-utils mercurial which
 
 ENV NGINX_VERSION 1.9.13
 
