@@ -3,7 +3,7 @@ MAINTAINER hsbt@ruby-lang.org
 
 RUN apt-get install -y software-properties-common
 RUN add-apt-repository -y ppa:brightbox/ruby-ng
-RUN apt-get update && apt-get install -y git build-essential devscripts ruby2.1 rake bison libssl-dev ruby-switch wget libxslt-dev libgd-dev libgeoip-dev
+RUN apt-get update && apt-get install -y git build-essential devscripts ruby2.1 rake bison libssl-dev ruby-switch wget libxslt-dev libgd-dev libgeoip-dev libperl-dev
 RUN ruby-switch --set ruby2.1
 
 RUN wget http://nginx.org/keys/nginx_signing.key
@@ -12,7 +12,7 @@ RUN echo 'deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx' >> /etc/a
 RUN echo 'deb-src http://nginx.org/packages/mainline/ubuntu/ trusty nginx' >> /etc/apt/sources.list
 RUN apt-get update
 
-ENV NGINX_VERSION 1.9.12
+ENV NGINX_VERSION 1.9.13
 
 WORKDIR /usr/local/src
 RUN apt-get build-dep -y nginx="$NGINX_VERSION"
