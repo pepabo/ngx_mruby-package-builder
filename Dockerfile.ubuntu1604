@@ -4,8 +4,8 @@ MAINTAINER hsbt@ruby-lang.org
 RUN apt-get -qq update && apt-get install -qq -y git build-essential devscripts ruby rake bison libssl-dev wget libxslt-dev libgd-dev libgeoip-dev libperl-dev
 
 RUN wget -qO - http://nginx.org/keys/nginx_signing.key | apt-key add -
-RUN echo 'deb http://nginx.org/packages/mainline/ubuntu/ vivid nginx' >> /etc/apt/sources.list
-RUN echo 'deb-src http://nginx.org/packages/mainline/ubuntu/ vivid nginx' >> /etc/apt/sources.list
+RUN echo 'deb http://nginx.org/packages/mainline/ubuntu/ xenial nginx' >> /etc/apt/sources.list
+RUN echo 'deb-src http://nginx.org/packages/mainline/ubuntu/ xenial nginx' >> /etc/apt/sources.list
 RUN apt-get -qq update
 
 ENV NGINX_VERSION 1.9.15
