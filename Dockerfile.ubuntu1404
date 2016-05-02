@@ -12,7 +12,7 @@ RUN echo 'deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx' >> /etc/a
 RUN echo 'deb-src http://nginx.org/packages/mainline/ubuntu/ trusty nginx' >> /etc/apt/sources.list
 RUN apt-get update
 
-ENV NGINX_VERSION 1.9.14
+ENV NGINX_VERSION 1.9.15
 
 WORKDIR /usr/local/src
 RUN apt-get build-dep -y nginx="$NGINX_VERSION"
