@@ -31,6 +31,6 @@ RUN make build_mruby
 RUN make generate_gems_config
 
 WORKDIR /usr/local/src/nginx-$NGINX_VERSION
-ADD ngx_mruby/ubuntu/rules.patch.xenial /tmp/rules.patch
+ADD ngx_mruby/ubuntu/rules.patch /tmp/rules.patch
 RUN patch -p0 < /tmp/rules.patch
 RUN dpkg-buildpackage -r -uc -b
