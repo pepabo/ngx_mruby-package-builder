@@ -1,15 +1,11 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER hsbt@ruby-lang.org
 
-RUN apt-get -qq update && apt-get -qq install -y software-properties-common
-RUN add-apt-repository -y ppa:brightbox/ruby-ng
-RUN apt-get -qq update && apt-get -qq install -y git build-essential devscripts ruby2.1 rake bison libssl-dev ruby-switch wget libxslt-dev libgd-dev libgeoip-dev libperl-dev
-RUN ruby-switch --set ruby2.1
+RUN apt-get -qq update && apt-get -qq install -y git build-essential devscripts ruby rake bison libssl-dev wget libxslt-dev libgd-dev libgeoip-dev libperl-dev
 
-RUN wget http://nginx.org/keys/nginx_signing.key
-RUN apt-key add nginx_signing.key
-RUN echo 'deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx' >> /etc/apt/sources.list
-RUN echo 'deb-src http://nginx.org/packages/mainline/ubuntu/ trusty nginx' >> /etc/apt/sources.list
+RUN wget -qO - http://nginx.org/keys/nginx_signing.key | apt-key add -
+RUN echo 'deb http://nginx.org/packages/mainline/ubuntu/ xenial nginx' >> /etc/apt/sources.list
+RUN echo 'deb-src http://nginx.org/packages/mainline/ubuntu/ xenial nginx' >> /etc/apt/sources.list
 RUN apt-get -qq update
 
 ENV NGINX_VERSION 1.9.15
@@ -24,7 +20,7 @@ WORKDIR /usr/local/src
 RUN git clone --branch v$NGX_MRUBY_VERSION --depth 1 https://github.com/matsumoto-r/ngx_mruby.git
 RUN git clone --branch v0.2.19 --depth 1 https://github.com/simpl/ngx_devel_kit.git
 
-RUN apt-get dist-upgrade -y
+RUN apt-get -qq dist-upgrade -y
 
 WORKDIR /usr/local/src/ngx_mruby
 RUN git submodule init
