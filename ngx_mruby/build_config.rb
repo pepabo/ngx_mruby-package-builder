@@ -22,5 +22,5 @@ MRuby::Build.new do |conf|
   conf.gem :github => 'matsumoto-r/mruby-localmemcache'
 
   # ngx_mruby extended class
-  conf.gem '../mrbgems/ngx_mruby_mrblib'
+  conf.gem './mrbgems/ngx_mruby_mrblib'
 end
