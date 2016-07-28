@@ -24,8 +24,6 @@ RUN git clone --branch v$NGX_MRUBY_VERSION --depth 1 https://github.com/matsumot
 # RUN yum -y update
 
 WORKDIR /usr/local/src/ngx_mruby
-RUN git submodule init
-RUN git submodule update
 RUN ./configure --with-ngx-src-root=/root/rpmbuild/BUILD/nginx-$NGINX_VERSION
 ADD ngx_mruby/build_config.rb /usr/local/src/ngx_mruby/build_config.rb
 RUN make build_mruby
