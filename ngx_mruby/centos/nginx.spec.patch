@@ -6,7 +6,7 @@
          --with-ipv6 \
 +        --without-stream_access_module \
 +        --add-module=/usr/local/src/ngx_mruby \
-+        --add-module=/usr/local/src/ngx_devel_kit \
++        --add-module=/usr/local/src/ngx_mruby/dependence/ngx_devel_kit \
          %{?with_http2:--with-http_v2_module}")
 
  Summary: High performance web server

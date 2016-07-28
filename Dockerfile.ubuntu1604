@@ -18,13 +18,10 @@ ENV NGX_MRUBY_VERSION 1.18.2
 
 WORKDIR /usr/local/src
 RUN git clone --branch v$NGX_MRUBY_VERSION --depth 1 https://github.com/matsumoto-r/ngx_mruby.git
-RUN git clone --branch v0.2.19 --depth 1 https://github.com/simpl/ngx_devel_kit.git
 
 RUN apt-get -qq dist-upgrade -y
 
 WORKDIR /usr/local/src/ngx_mruby
-RUN git submodule init
-RUN git submodule update
 RUN ./configure --with-ngx-src-root=/usr/local/src/nginx-$NGINX_VERSION
 ADD ngx_mruby/build_config.rb /usr/local/src/ngx_mruby/build_config.rb
 RUN make build_mruby
