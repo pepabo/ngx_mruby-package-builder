@@ -3,18 +3,20 @@ MAINTAINER hsbt@ruby-lang.org
 
 RUN yum -y install --enablerepo=extras epel-release
 RUN yum -y groupinstall "Development Tools"
-RUN yum -y install rake openssl-devel wget
+RUN yum -y install rake wget
 RUN yum -y install rpm-build rpmdevtools yum-utils mercurial which
 
 ENV NGINX_VERSION 1.11.2
 
+RUN wget https://www.openssl.org/source/openssl-1.0.2h.tar.gz -P /tmp
+RUN tar xzvf /tmp/openssl-1.0.2h.tar.gz -C /tmp/
 RUN wget http://nginx.org/packages/mainline/centos/7/SRPMS/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm -P /tmp
 RUN rpm -Uvh /tmp/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm
 RUN yum-builddep -y /tmp/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm
 
 WORKDIR /root/rpmbuild/SPECS
-ADD ngx_mruby/centos/nginx.spec.patch /root/rpmbuild/SPECS/nginx.spec.patch
-RUN patch -p0 < nginx.spec.patch
+ADD ngx_mruby/centos/nginx.spec.opensslstatic.patch /root/rpmbuild/SPECS/nginx.spec.opensslstatic.patch
+RUN patch -p0 < nginx.spec.opensslstatic.patch
 
 ENV NGX_MRUBY_VERSION 1.18.2
 
@@ -27,7 +29,7 @@ RUN git clone --branch v0.2.19 --depth 1 https://github.com/simpl/ngx_devel_kit.
 WORKDIR /usr/local/src/ngx_mruby
 RUN git submodule init
 RUN git submodule update
-RUN ./configure --with-ngx-src-root=/root/rpmbuild/BUILD/nginx-$NGINX_VERSION
+RUN ./configure --with-ngx-src-root=/root/rpmbuild/BUILD/nginx-$NGINX_VERSION --with-openssl-src=/tmp/openssl-1.0.2h/
 ADD ngx_mruby/build_config.rb /usr/local/src/ngx_mruby/build_config.rb
 RUN make build_mruby
 RUN make generate_gems_config
