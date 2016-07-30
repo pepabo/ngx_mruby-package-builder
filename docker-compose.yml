@@ -19,13 +19,6 @@ ubuntu1404:
   volumes:
     - .:/tmp:rw
 
-ubuntu1504:
-  dockerfile: Dockerfile.ubuntu1504
-  build: .
-  command: cp -a /usr/local/src/nginx_1.9.15-1~vivid_amd64.deb /tmp/nginx-ngx_mruby_1.9.15-1~vivid_amd64.deb
-  volumes:
-    - .:/tmp:rw
-
 ubuntu1604:
   dockerfile: Dockerfile.ubuntu1604
   build: .
