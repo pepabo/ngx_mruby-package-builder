@@ -13,6 +13,7 @@ MRuby::Build.new do |conf|
   conf.gem :github => 'iij/mruby-socket'
   conf.gem :github => 'mattn/mruby-json'
   conf.gem :github => 'mattn/mruby-onig-regexp'
+  conf.gem :github => 'mattn/mruby-mysql'
   conf.gem :github => 'matsumoto-r/mruby-redis'
   # conf.gem :github => 'matsumoto-r/mruby-memcached'
   conf.gem :github => 'matsumoto-r/mruby-sleep'
