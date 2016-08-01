@@ -1,0 +1,49 @@
+--- nginx.spec.orig     2016-05-24 06:00:16.077154800 +0000
++++ nginx.spec  2016-05-24 06:01:29.076627723 +0000
+@@ -12,8 +12,6 @@
+ Requires(pre): shadow-utils
+ Requires: initscripts >= 8.36
+ Requires(post): chkconfig
+-Requires: openssl
+-BuildRequires: openssl-devel
+ BuildRequires: perl
+ BuildRequires: GeoIP-devel
+ %endif
+@@ -24,8 +22,6 @@
+ Requires(pre): shadow-utils
+ Requires: initscripts >= 8.36
+ Requires(post): chkconfig
+-Requires: openssl >= 1.0.1
+-BuildRequires: openssl-devel >= 1.0.1
+ BuildRequires: perl-devel
+ BuildRequires: perl-ExtUtils-Embed
+ BuildRequires: GeoIP-devel
+@@ -39,9 +35,7 @@
+ Epoch: %{epoch}
+ Requires(pre): shadow-utils
+ Requires: systemd
+-Requires: openssl >= 1.0.1
+ BuildRequires: systemd
+-BuildRequires: openssl-devel >= 1.0.1
+ BuildRequires: perl-devel
+ BuildRequires: perl-ExtUtils-Embed
+ BuildRequires: GeoIP-devel
+@@ -53,7 +47,6 @@
+ %define nginx_loggroup trusted
+ Requires(pre): shadow
+ Requires: systemd
+-BuildRequires: libopenssl-devel
+ BuildRequires: systemd
+ BuildRequires: perl
+ BuildRequires: libGeoIP-devel
+@@ -121,6 +114,10 @@
+         --with-mail_ssl_module \
+         --with-file-aio \
+         --with-ipv6 \
++        --with-openssl=/tmp/openssl-1.0.2h \
++        --without-stream_access_module \
++        --add-module=/usr/local/src/ngx_mruby \
++        --add-module=/usr/local/src/ngx_devel_kit \
+         %{?with_http2:--with-http_v2_module}")
+
+ Summary: High performance web server
