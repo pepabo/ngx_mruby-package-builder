@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER hsbt@ruby-lang.org
 
-RUN apt-get -qq update && apt-get -qq install -y git build-essential devscripts ruby rake bison libssl-dev wget libxslt-dev libgd-dev libgeoip-dev libperl-dev
+RUN apt-get -qq update && apt-get -qq install -y git build-essential devscripts ruby rake bison libssl-dev wget libxslt-dev libgd-dev libgeoip-dev libperl-dev libmysqlclient-dev
 
 RUN wget -qO - http://nginx.org/keys/nginx_signing.key | apt-key add -
 RUN echo 'deb http://nginx.org/packages/mainline/ubuntu/ xenial nginx' >> /etc/apt/sources.list
