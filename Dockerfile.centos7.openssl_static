@@ -4,7 +4,7 @@ MAINTAINER hsbt@ruby-lang.org
 RUN yum -y install --enablerepo=extras epel-release
 RUN yum -y groupinstall "Development Tools"
 RUN yum -y install rake wget
-RUN yum -y install rpm-build rpmdevtools yum-utils mercurial which mysql-devel
+RUN yum -y install rpm-build rpmdevtools yum-utils mercurial which mysql-devel libmemcached-devel.x86_64
 
 ENV NGINX_VERSION 1.11.2
 
@@ -18,7 +18,7 @@ WORKDIR /root/rpmbuild/SPECS
 ADD ngx_mruby/centos/nginx.spec.opensslstatic.patch /root/rpmbuild/SPECS/nginx.spec.opensslstatic.patch
 RUN patch -p0 < nginx.spec.opensslstatic.patch
 
-ENV NGX_MRUBY_VERSION 1.18.2
+ENV NGX_MRUBY_VERSION 1.18.4
 
 WORKDIR /usr/local/src
 RUN git clone --branch v$NGX_MRUBY_VERSION --depth 1 https://github.com/matsumoto-r/ngx_mruby.git
