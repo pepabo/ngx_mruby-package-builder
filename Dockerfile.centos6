@@ -9,7 +9,7 @@ RUN yum -y install rpm-build rpmdevtools yum-utils mercurial perl-ExtUtils-Embed
 RUN wget https://s3.amazonaws.com/pkgr-buildpack-ruby/current/centos-6/ruby-2.2.3.tgz
 RUN tar xf ruby-2.2.3.tgz -C /usr/local
 
-ENV NGINX_VERSION 1.11.6
+ENV NGINX_VERSION 1.11.7
 
 RUN wget http://nginx.org/packages/mainline/centos/6/SRPMS/nginx-$NGINX_VERSION-1.el6.ngx.src.rpm -P /tmp
 RUN rpm -Uvh /tmp/nginx-$NGINX_VERSION-1.el6.ngx.src.rpm
