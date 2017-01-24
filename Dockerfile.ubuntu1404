@@ -18,7 +18,7 @@ WORKDIR /usr/local/src
 RUN apt-get -qq build-dep -y nginx="$NGINX_VERSION"
 RUN apt-get -qq source nginx="$NGINX_VERSION"
 
-ENV NGX_MRUBY_VERSION 1.18.7
+ENV NGX_MRUBY_VERSION 1.18.8
 
 WORKDIR /usr/local/src
 RUN git clone --branch v$NGX_MRUBY_VERSION --depth 1 https://github.com/matsumoto-r/ngx_mruby.git
