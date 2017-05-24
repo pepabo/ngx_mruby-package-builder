@@ -5,7 +5,7 @@ MRuby::Build.new do |conf|
   conf.gembox 'full-core'
 
   conf.cc do |cc|
-    cc.flags << '-fPIC'
+    cc.flags << '-fPIE'
   end
 
   conf.gem :github => 'iij/mruby-io'
