@@ -4,6 +4,10 @@ MRuby::Build.new do |conf|
 
   conf.gembox 'full-core'
 
+  conf.cc do |cc|
+    cc.flags << '-fPIE'
+  end
+
   conf.gem :github => 'iij/mruby-io'
   conf.gem :github => 'iij/mruby-env'
   conf.gem :github => 'iij/mruby-dir'
