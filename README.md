@@ -1,4 +1,4 @@
-# ngx_mruby-builder
+# ngx\_mruby-package-builder
 
 Please install https://www.docker.com/docker-toolbox
 
