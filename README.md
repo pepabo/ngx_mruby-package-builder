@@ -1,4 +1,4 @@
-# ngx\_mruby-package-builder
+# ngx\_mruby-package-builder [![Build Status](https://travis-ci.org/pepabo/ngx_mruby-package-builder.svg?branch=master)](https://travis-ci.org/pepabo/ngx_mruby-package-builder)
 
 ## Requirements
 
