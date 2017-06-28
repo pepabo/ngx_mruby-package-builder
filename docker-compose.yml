@@ -1,27 +1,27 @@
 centos6:
   dockerfile: Dockerfile.centos6
   build: .
-  command: cp -a /root/rpmbuild/RPMS/x86_64/nginx-1.13.1-1.el6.ngx.x86_64.rpm /tmp/nginx-ngx_mruby-1.13.1-1.el6.ngx.x86_64.rpm
+  command: cp -a /root/rpmbuild/RPMS/x86_64/nginx-1.13.2-1.el6.ngx.x86_64.rpm /tmp/nginx-ngx_mruby-1.13.2-1.el6.ngx.x86_64.rpm
   volumes:
     - .:/tmp:rw
 
 centos7:
   dockerfile: Dockerfile.centos7
   build: .
-  command: cp -a /root/rpmbuild/RPMS/x86_64/nginx-1.13.1-1.el7.centos.ngx.x86_64.rpm /tmp/nginx-ngx_mruby-1.13.1-1.el7.centos.ngx.x86_64.rpm
+  command: cp -a /root/rpmbuild/RPMS/x86_64/nginx-1.13.2-1.el7.centos.ngx.x86_64.rpm /tmp/nginx-ngx_mruby-1.13.2-1.el7.centos.ngx.x86_64.rpm
   volumes:
     - .:/tmp:rw
 
 ubuntu1404:
   dockerfile: Dockerfile.ubuntu1404
   build: .
-  command: cp -a /usr/local/src/nginx_1.13.1-1~trusty_amd64.deb /tmp/nginx-ngx_mruby_1.13.1-1~trusty_amd64.deb
+  command: cp -a /usr/local/src/nginx_1.13.2-1~trusty_amd64.deb /tmp/nginx-ngx_mruby_1.13.2-1~trusty_amd64.deb
   volumes:
     - .:/tmp:rw
 
 ubuntu1604:
   dockerfile: Dockerfile.ubuntu1604
   build: .
-  command: cp -a /usr/local/src/nginx_1.13.1-1~xenial_amd64.deb /tmp/nginx-ngx_mruby_1.13.1-1~xenial_amd64.deb
+  command: cp -a /usr/local/src/nginx_1.13.2-1~xenial_amd64.deb /tmp/nginx-ngx_mruby_1.13.2-1~xenial_amd64.deb
   volumes:
     - .:/tmp:rw
