@@ -6,7 +6,7 @@ RUN yum -y groupinstall "Development Tools"
 RUN yum -y install rake openssl-devel wget
 RUN yum -y install rpm-build rpmdevtools yum-utils mercurial which
 
-ENV NGINX_VERSION 1.13.2
+ENV NGINX_VERSION 1.13.3
 
 RUN wget http://nginx.org/packages/mainline/centos/7/SRPMS/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm -P /tmp
 RUN rpm -Uvh /tmp/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm
