@@ -8,7 +8,7 @@ RUN echo 'deb http://nginx.org/packages/mainline/ubuntu/ xenial nginx' >> /etc/a
 RUN echo 'deb-src http://nginx.org/packages/mainline/ubuntu/ xenial nginx' >> /etc/apt/sources.list
 RUN apt-get -qq update
 
-ENV NGINX_VERSION 1.13.2
+ENV NGINX_VERSION 1.13.3
 
 WORKDIR /usr/local/src
 RUN apt-get -qq build-dep -y nginx="$NGINX_VERSION"
