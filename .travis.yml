@@ -1,18 +1,8 @@
-matrix:
-  include:
-    - env: OS_RELEASE=centos6
-      sudo: required
-      services: docker
-      script: docker-compose build $OS_RELEASE
-    - env: OS_RELEASE=centos7
-      sudo: required
-      services: docker
-      script: docker-compose build $OS_RELEASE
-    - env: OS_RELEASE=ubuntu1404
-      sudo: required
-      services: docker
-      script: docker-compose build $OS_RELEASE
-    - env: OS_RELEASE=ubuntu1604
-      sudo: required
-      services: docker
-      script: docker-compose build $OS_RELEASE
+sudo: required
+services: docker
+script: docker-compose build $OS_RELEASE
+env:
+  - OS_RELEASE=centos6
+  - OS_RELEASE=centos7
+  - OS_RELEASE=ubuntu1404
+  - OS_RELEASE=ubuntu1604
