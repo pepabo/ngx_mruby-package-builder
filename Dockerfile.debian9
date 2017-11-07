@@ -3,8 +3,8 @@ FROM debian:9
 RUN apt-get -qq update && apt-get -qq install -y git build-essential devscripts ruby rake bison libssl-dev wget libxslt-dev libgd-dev libgeoip-dev libperl-dev
 
 RUN wget -qO - http://nginx.org/keys/nginx_signing.key | apt-key add -
-RUN echo 'deb http://nginx.org/packages/mainline/debian/ jessie nginx' >> /etc/apt/sources.list
-RUN echo 'deb-src http://nginx.org/packages/mainline/debian/ jessie nginx' >> /etc/apt/sources.list
+RUN echo 'deb http://nginx.org/packages/mainline/debian/ stretch nginx' >> /etc/apt/sources.list
+RUN echo 'deb-src http://nginx.org/packages/mainline/debian/ stretch nginx' >> /etc/apt/sources.list
 RUN apt-get -qq update
 RUN apt-get -qq dist-upgrade -y
 
