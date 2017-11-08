@@ -25,3 +25,10 @@ ubuntu1604:
   command: cp -a /usr/local/src/nginx_1.13.6-1~xenial_amd64.deb /tmp/nginx-ngx_mruby_1.13.6-1~xenial_amd64.deb
   volumes:
     - .:/tmp:rw
+
+debian9:
+  dockerfile: Dockerfile.debian9
+  build: .
+  command: cp -a /usr/local/src/nginx_1.13.6-1~stretch_amd64.deb /tmp/nginx-ngx_mruby_1.13.6-1~stretch_amd64.deb
+  volumes:
+    - .:/tmp:rw
