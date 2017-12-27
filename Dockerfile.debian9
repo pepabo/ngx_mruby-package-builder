@@ -8,7 +8,7 @@ RUN echo 'deb-src http://nginx.org/packages/mainline/debian/ stretch nginx' >> /
 RUN apt-get -qq update
 RUN apt-get -qq dist-upgrade -y
 
-ENV NGINX_VERSION 1.13.7
+ENV NGINX_VERSION 1.13.8
 
 WORKDIR /usr/local/src
 RUN apt-get -qq build-dep -y nginx="$NGINX_VERSION"
