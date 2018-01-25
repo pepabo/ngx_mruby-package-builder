@@ -1,5 +1,6 @@
 FROM centos:6
 ARG NGINX_VERSION=
+ARG NGX_MRUBY_VERSION=
 
 RUN yum -y install --enablerepo=extras epel-release
 RUN yum -y groupinstall "Development Tools"
@@ -16,8 +17,6 @@ RUN yum-builddep -y --nogpgcheck /tmp/nginx-$NGINX_VERSION-1.el6.ngx.src.rpm
 WORKDIR /root/rpmbuild/SPECS
 ADD ngx_mruby/centos/nginx.spec.patch /root/rpmbuild/SPECS/nginx.spec.patch
 RUN patch -p0 < nginx.spec.patch
-
-ENV NGX_MRUBY_VERSION 1.20.1
 
 WORKDIR /usr/local/src
 RUN git clone --branch v$NGX_MRUBY_VERSION --depth 1 https://github.com/matsumoto-r/ngx_mruby.git

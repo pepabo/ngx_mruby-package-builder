@@ -1,5 +1,6 @@
 FROM debian:9
 ARG NGINX_VERSION=
+ARG NGX_MRUBY_VERSION=
 
 RUN apt-get -qq update && apt-get -qq install -y git build-essential devscripts ruby rake bison libssl-dev wget libxslt-dev libgd-dev libgeoip-dev libperl-dev
 
@@ -12,8 +13,6 @@ RUN apt-get -qq dist-upgrade -y
 WORKDIR /usr/local/src
 RUN apt-get -qq build-dep -y nginx="$NGINX_VERSION"
 RUN apt-get -qq source nginx="$NGINX_VERSION"
-
-ENV NGX_MRUBY_VERSION 1.20.1
 
 RUN git clone --branch v$NGX_MRUBY_VERSION --depth 1 https://github.com/matsumoto-r/ngx_mruby.git
 
