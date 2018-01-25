@@ -1,5 +1,6 @@
 FROM ubuntu:14.04
-MAINTAINER hsbt@ruby-lang.org
+ARG NGINX_VERSION=
+ARG NGX_MRUBY_VERSION=
 
 RUN apt-get -qq update && apt-get -qq install -y software-properties-common
 RUN add-apt-repository -y ppa:brightbox/ruby-ng
@@ -12,13 +13,9 @@ RUN echo 'deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx' >> /etc/a
 RUN echo 'deb-src http://nginx.org/packages/mainline/ubuntu/ trusty nginx' >> /etc/apt/sources.list
 RUN apt-get -qq update
 
-ENV NGINX_VERSION 1.13.8
-
 WORKDIR /usr/local/src
 RUN apt-get -qq build-dep -y nginx="$NGINX_VERSION"
 RUN apt-get -qq source nginx="$NGINX_VERSION"
-
-ENV NGX_MRUBY_VERSION 1.20.1
 
 WORKDIR /usr/local/src
 RUN git clone --branch v$NGX_MRUBY_VERSION --depth 1 https://github.com/matsumoto-r/ngx_mruby.git

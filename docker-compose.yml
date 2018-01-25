@@ -1,34 +1,56 @@
-centos6:
-  dockerfile: Dockerfile.centos6
-  build: .
-  command: cp -a /root/rpmbuild/RPMS/x86_64/nginx-1.13.8-1.el6.ngx.x86_64.rpm /tmp/nginx-ngx_mruby-1.13.8-1.el6.ngx.x86_64.rpm
-  volumes:
-    - .:/tmp:rw
+version: "2"
+services:
+  centos6:
+    build:
+      dockerfile: Dockerfile.centos6
+      context: .
+      args:
+        NGINX_VERSION: ${NGINX_VERSION}
+        NGX_MRUBY_VERSION: ${NGX_MRUBY_VERSION}
+    command: cp -a /root/rpmbuild/RPMS/x86_64/nginx-${NGINX_VERSION}-1.el6.ngx.x86_64.rpm /tmp
+    volumes:
+      - .:/tmp:rw
 
-centos7:
-  dockerfile: Dockerfile.centos7
-  build: .
-  command: cp -a /root/rpmbuild/RPMS/x86_64/nginx-1.13.8-1.el7_4.ngx.x86_64.rpm /tmp/nginx-ngx_mruby-1.13.8-1.el7_4.ngx.x86_64.rpm
-  volumes:
-    - .:/tmp:rw
+  centos7:
+    build:
+      dockerfile: Dockerfile.centos7
+      context: .
+      args:
+        NGINX_VERSION: ${NGINX_VERSION}
+        NGX_MRUBY_VERSION: ${NGX_MRUBY_VERSION}
+    command: cp -a /root/rpmbuild/RPMS/x86_64/nginx-${NGINX_VERSION}-1.el7_4.ngx.x86_64.rpm /tmp
+    volumes:
+      - .:/tmp:rw
 
-ubuntu1404:
-  dockerfile: Dockerfile.ubuntu1404
-  build: .
-  command: cp -a /usr/local/src/nginx_1.13.8-1~trusty_amd64.deb /tmp/nginx-ngx_mruby_1.13.8-1~trusty_amd64.deb
-  volumes:
-    - .:/tmp:rw
+  ubuntu1404:
+    build:
+      dockerfile: Dockerfile.ubuntu1404
+      context: .
+      args:
+        NGINX_VERSION: ${NGINX_VERSION}
+        NGX_MRUBY_VERSION: ${NGX_MRUBY_VERSION}
+    command: cp -a /usr/local/src/nginx_${NGINX_VERSION}-1~trusty_amd64.deb /tmp
+    volumes:
+      - .:/tmp:rw
 
-ubuntu1604:
-  dockerfile: Dockerfile.ubuntu1604
-  build: .
-  command: cp -a /usr/local/src/nginx_1.13.8-1~xenial_amd64.deb /tmp/nginx-ngx_mruby_1.13.8-1~xenial_amd64.deb
-  volumes:
-    - .:/tmp:rw
+  ubuntu1604:
+    build:
+      dockerfile: Dockerfile.ubuntu1604
+      context: .
+      args:
+        NGINX_VERSION: ${NGINX_VERSION}
+        NGX_MRUBY_VERSION: ${NGX_MRUBY_VERSION}
+    command: cp -a /usr/local/src/nginx_${NGINX_VERSION}-1~xenial_amd64.deb /tmp
+    volumes:
+      - .:/tmp:rw
 
-debian9:
-  dockerfile: Dockerfile.debian9
-  build: .
-  command: cp -a /usr/local/src/nginx_1.13.8-1~stretch_amd64.deb /tmp/nginx-ngx_mruby_1.13.8-1~stretch_amd64.deb
-  volumes:
-    - .:/tmp:rw
+  debian9:
+    build:
+      dockerfile: Dockerfile.debian9
+      context: .
+      args:
+        NGINX_VERSION: ${NGINX_VERSION}
+        NGX_MRUBY_VERSION: ${NGX_MRUBY_VERSION}
+    command: cp -a /usr/local/src/nginx_${NGINX_VERSION}-1~stretch_amd64.deb /tmp
+    volumes:
+      - .:/tmp:rw
