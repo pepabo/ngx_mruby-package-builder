@@ -1,4 +1,6 @@
 FROM ubuntu:14.04
+ARG NGINX_VERSION=
+
 MAINTAINER hsbt@ruby-lang.org
 
 RUN apt-get -qq update && apt-get -qq install -y software-properties-common
@@ -11,8 +13,6 @@ RUN apt-key add nginx_signing.key
 RUN echo 'deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx' >> /etc/apt/sources.list
 RUN echo 'deb-src http://nginx.org/packages/mainline/ubuntu/ trusty nginx' >> /etc/apt/sources.list
 RUN apt-get -qq update
-
-ENV NGINX_VERSION 1.13.8
 
 WORKDIR /usr/local/src
 RUN apt-get -qq build-dep -y nginx="$NGINX_VERSION"

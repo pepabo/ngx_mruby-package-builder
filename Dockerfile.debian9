@@ -1,4 +1,5 @@
 FROM debian:9
+ARG NGINX_VERSION=
 
 RUN apt-get -qq update && apt-get -qq install -y git build-essential devscripts ruby rake bison libssl-dev wget libxslt-dev libgd-dev libgeoip-dev libperl-dev
 
@@ -7,8 +8,6 @@ RUN echo 'deb http://nginx.org/packages/mainline/debian/ stretch nginx' >> /etc/
 RUN echo 'deb-src http://nginx.org/packages/mainline/debian/ stretch nginx' >> /etc/apt/sources.list
 RUN apt-get -qq update
 RUN apt-get -qq dist-upgrade -y
-
-ENV NGINX_VERSION 1.13.8
 
 WORKDIR /usr/local/src
 RUN apt-get -qq build-dep -y nginx="$NGINX_VERSION"
