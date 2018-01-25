@@ -1,6 +1,5 @@
 FROM centos:6
 ARG NGINX_VERSION=
-MAINTAINER hsbt@ruby-lang.org
 
 RUN yum -y install --enablerepo=extras epel-release
 RUN yum -y groupinstall "Development Tools"

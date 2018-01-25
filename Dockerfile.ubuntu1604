@@ -1,8 +1,6 @@
 FROM ubuntu:16.04
 ARG NGINX_VERSION=
 
-MAINTAINER hsbt@ruby-lang.org
-
 RUN apt-get -qq update && apt-get -qq install -y git build-essential devscripts ruby rake bison libssl-dev wget libxslt-dev libgd-dev libgeoip-dev libperl-dev
 
 RUN wget -qO - http://nginx.org/keys/nginx_signing.key | apt-key add -

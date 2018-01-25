@@ -1,8 +1,6 @@
 FROM ubuntu:14.04
 ARG NGINX_VERSION=
 
-MAINTAINER hsbt@ruby-lang.org
-
 RUN apt-get -qq update && apt-get -qq install -y software-properties-common
 RUN add-apt-repository -y ppa:brightbox/ruby-ng
 RUN apt-get -qq update && apt-get -qq install -y git build-essential devscripts ruby2.1 rake bison libssl-dev ruby-switch wget libxslt-dev libgd-dev libgeoip-dev libperl-dev
