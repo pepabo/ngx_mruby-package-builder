@@ -19,7 +19,9 @@ ADD ngx_mruby/centos/nginx.spec.patch /root/rpmbuild/SPECS/nginx.spec.patch
 RUN patch -p0 < nginx.spec.patch
 
 WORKDIR /usr/local/src
-RUN git clone --branch v$NGX_MRUBY_VERSION --depth 1 https://github.com/matsumoto-r/ngx_mruby.git
+RUN git clone --depth 1 https://github.com/matsumoto-r/ngx_mruby.git
+WORKDIR /usr/local/src/ngx_mruby
+RUN git checkout v$NGX_MRUBY_VERSION
 
 RUN yum -y update
 
