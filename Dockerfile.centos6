@@ -7,6 +7,10 @@ RUN yum -y groupinstall "Development Tools"
 RUN yum -y install wget tar openssl-devel
 RUN yum -y install rpm-build rpmdevtools yum-utils mercurial perl-ExtUtils-Embed
 
+RUN wget -O /etc/yum.repos.d/devtools-2.repo https://people.centos.org/tru/devtools-2/devtools-2.repo
+RUN yum -y install devtoolset-2-gcc devtoolset-2-gcc-c++ devtoolset-2-binutils
+ENV PATH /opt/rh/devtoolset-2/root/usr/bin${PATH:+:${PATH}}
+
 RUN wget https://s3.amazonaws.com/pkgr-buildpack-ruby/current/centos-6/ruby-2.2.3.tgz
 RUN tar xf ruby-2.2.3.tgz -C /usr/local
 
