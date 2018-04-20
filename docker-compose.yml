@@ -44,6 +44,17 @@ services:
     volumes:
       - .:/tmp:rw
 
+  ubuntu1710:
+    build:
+      dockerfile: Dockerfile.ubuntu1710
+      context: .
+      args:
+        NGINX_VERSION: ${NGINX_VERSION}
+        NGX_MRUBY_VERSION: ${NGX_MRUBY_VERSION}
+    command: cp -a /usr/local/src/nginx_${NGINX_VERSION}-1~artful_amd64.deb /tmp
+    volumes:
+      - .:/tmp:rw
+
   debian9:
     build:
       dockerfile: Dockerfile.debian9
