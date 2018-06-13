@@ -6,4 +6,5 @@ env:
   - OS_RELEASE=centos7
   - OS_RELEASE=ubuntu1404
   - OS_RELEASE=ubuntu1604
+  - OS_RELEASE=ubuntu1710
   - OS_RELEASE=debian9
