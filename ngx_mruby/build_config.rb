@@ -17,7 +17,7 @@ MRuby::Build.new do |conf|
   conf.gem :github => 'iij/mruby-socket'
   conf.gem :github => 'mattn/mruby-json'
   conf.gem :github => 'mattn/mruby-onig-regexp'
-  conf.gem :github => 'matsumoto-r/mruby-redis', :checksum_hash => 'af40e42492c1a24ec88a15cd56eee9edc7e69788'
+  conf.gem :github => 'matsumoto-r/mruby-redis'
   # conf.gem :github => 'matsumoto-r/mruby-memcached'
   conf.gem :github => 'matsumoto-r/mruby-sleep'
   conf.gem :github => 'matsumoto-r/mruby-userdata'
