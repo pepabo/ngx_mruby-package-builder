@@ -22,17 +22,6 @@ services:
     volumes:
       - .:/tmp:rw
 
-  ubuntu1404:
-    build:
-      dockerfile: Dockerfile.ubuntu1404
-      context: .
-      args:
-        NGINX_VERSION: ${NGINX_VERSION}
-        NGX_MRUBY_VERSION: ${NGX_MRUBY_VERSION}
-    command: cp -a /usr/local/src/nginx_${NGINX_VERSION}-1~trusty_amd64.deb /tmp
-    volumes:
-      - .:/tmp:rw
-
   ubuntu1604:
     build:
       dockerfile: Dockerfile.ubuntu1604
