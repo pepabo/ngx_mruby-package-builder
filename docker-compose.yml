@@ -33,14 +33,14 @@ services:
     volumes:
       - .:/tmp:rw
 
-  ubuntu1604:
+  ubuntu1804:
     build:
-      dockerfile: Dockerfile.ubuntu1604
+      dockerfile: Dockerfile.ubuntu1804
       context: .
       args:
         NGINX_VERSION: ${NGINX_VERSION}
         NGX_MRUBY_VERSION: ${NGX_MRUBY_VERSION}
-    command: cp -a /usr/local/src/nginx_${NGINX_VERSION}-1~xenial_amd64.deb /tmp
+    command: cp -a /usr/local/src/nginx_${NGINX_VERSION}-1~bionic_amd64.deb /tmp
     volumes:
       - .:/tmp:rw
 
