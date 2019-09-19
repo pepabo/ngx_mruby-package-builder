@@ -33,6 +33,17 @@ services:
     volumes:
       - .:/tmp:rw
 
+  ubuntu1804:
+    build:
+      dockerfile: Dockerfile.ubuntu1804
+      context: .
+      args:
+        NGINX_VERSION: ${NGINX_VERSION}
+        NGX_MRUBY_VERSION: ${NGX_MRUBY_VERSION}
+    command: cp -a /usr/local/src/nginx_${NGINX_VERSION}-1~bionic_amd64.deb /tmp
+    volumes:
+      - .:/tmp:rw
+
   debian9:
     build:
       dockerfile: Dockerfile.debian9

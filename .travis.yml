@@ -5,4 +5,5 @@ env:
   - OS_RELEASE=centos6
   - OS_RELEASE=centos7
   - OS_RELEASE=ubuntu1604
+  - OS_RELEASE=ubuntu1804
   - OS_RELEASE=debian9
