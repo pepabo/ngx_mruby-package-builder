@@ -1,0 +1,18 @@
+name: Build Package CI
+
+on: [push]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        os: [centos6, centos7, ubuntu1604, ubuntu1804, debian9]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build package
+      run: docker-compose build ${{ matrix.os }}
