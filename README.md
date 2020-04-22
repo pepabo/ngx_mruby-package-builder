@@ -1,4 +1,6 @@
-# ngx\_mruby-package-builder [![Build Status](https://travis-ci.org/pepabo/ngx_mruby-package-builder.svg?branch=master)](https://travis-ci.org/pepabo/ngx_mruby-package-builder)
+# ngx\_mruby-package-builder
+
+[![Build Package CI](https://github.com/pepabo/ngx_mruby-package-builder/workflows/Build%20Package%20CI/badge.svg)](https://github.com/pepabo/ngx_mruby-package-builder/actions)
 
 ## Requirements
 
