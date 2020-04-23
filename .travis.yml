@@ -1,9 +1,0 @@
-sudo: required
-services: docker
-script: docker-compose build $OS_RELEASE
-env:
-  - OS_RELEASE=centos6
-  - OS_RELEASE=centos7
-  - OS_RELEASE=ubuntu1604
-  - OS_RELEASE=ubuntu1804
-  - OS_RELEASE=debian9
