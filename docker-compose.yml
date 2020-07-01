@@ -1,16 +1,5 @@
 version: "2"
 services:
-  centos6:
-    build:
-      dockerfile: Dockerfile.centos6
-      context: .
-      args:
-        NGINX_VERSION: ${NGINX_VERSION}
-        NGX_MRUBY_VERSION: ${NGX_MRUBY_VERSION}
-    command: cp -a /root/rpmbuild/RPMS/x86_64/nginx-${NGINX_VERSION}-1.el6.ngx.x86_64.rpm /tmp
-    volumes:
-      - .:/tmp:rw
-
   centos7:
     build:
       dockerfile: Dockerfile.centos7
