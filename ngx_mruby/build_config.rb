@@ -14,12 +14,12 @@ MRuby::Build.new do |conf|
   conf.gem :github => 'iij/mruby-process'
   conf.gem :github => 'mattn/mruby-json'
   conf.gem :github => 'mattn/mruby-onig-regexp'
-  conf.gem :github => 'matsumoto-r/mruby-redis'
-  # conf.gem :github => 'matsumoto-r/mruby-memcached'
-  conf.gem :github => 'matsumoto-r/mruby-userdata'
-  conf.gem :github => 'matsumoto-r/mruby-uname'
-  conf.gem :github => 'matsumoto-r/mruby-mutex'
-  conf.gem :github => 'matsumoto-r/mruby-localmemcache'
+  conf.gem :github => 'matsumotory/mruby-redis'
+  # conf.gem :github => 'matsumotory/mruby-memcached'
+  conf.gem :github => 'matsumotory/mruby-userdata'
+  conf.gem :github => 'matsumotory/mruby-uname'
+  conf.gem :github => 'matsumotory/mruby-mutex'
+  conf.gem :github => 'matsumotory/mruby-localmemcache'
 
   # ngx_mruby extended class
   conf.gem './mrbgems/ngx_mruby_mrblib'
