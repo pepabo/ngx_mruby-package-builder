@@ -14,7 +14,7 @@ RUN apt-get -qq build-dep -y nginx="$NGINX_VERSION"
 RUN apt-get -qq source nginx="$NGINX_VERSION"
 
 WORKDIR /usr/local/src
-RUN git clone --branch v$NGX_MRUBY_VERSION --depth 1 https://github.com/matsumoto-r/ngx_mruby.git
+RUN git clone --branch v$NGX_MRUBY_VERSION --depth 1 https://github.com/matsumotory/ngx_mruby.git
 
 RUN apt-get -qq dist-upgrade -y
 
