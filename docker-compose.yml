@@ -11,13 +11,13 @@ services:
     volumes:
       - .:/tmp:rw
 
-  ubuntu1804:
+  ubuntu2204:
     build:
-      dockerfile: Dockerfile.ubuntu1804
+      dockerfile: Dockerfile.ubuntu2204
       context: .
       args:
         NGINX_VERSION: ${NGINX_VERSION}
         NGX_MRUBY_VERSION: ${NGX_MRUBY_VERSION}
-    command: cp -a /usr/local/src/nginx_${NGINX_VERSION}-1~bionic_amd64.deb /tmp
+    command: cp -a /usr/local/src/nginx_${NGINX_VERSION}-1~jammy_amd64.deb /tmp
     volumes:
       - .:/tmp:rw
